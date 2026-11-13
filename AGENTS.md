@@ -29,3 +29,5 @@ use the editor.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
 - Site content (services, work, reels, contact) lives in src/lib/content.ts; pages share PageShell from src/components/site.tsx — single source for copy.
+- Film records include verified native dimensions, original media and lightweight silent previews; category filtering is shared so every view preserves the same collection and proportions.
+- Live previews play only while visible, pause for hidden tabs and full playback, and respect reduced motion; full originals open in an accessible player.

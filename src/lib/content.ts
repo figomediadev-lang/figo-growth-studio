@@ -1,3 +1,27 @@
+import film1 from "@/assets/films/film-1.mp4.asset.json";
+import preview1 from "@/assets/films/film-1-preview.mp4.asset.json";
+import cover1 from "@/assets/films/film-1-cover.jpg.asset.json";
+import film3 from "@/assets/films/film-3.mp4.asset.json";
+import preview3 from "@/assets/films/film-3-preview.mp4.asset.json";
+import cover3 from "@/assets/films/film-3-cover.jpg.asset.json";
+import film4 from "@/assets/films/film-4.mp4.asset.json";
+import preview4 from "@/assets/films/film-4-preview.mp4.asset.json";
+import cover4 from "@/assets/films/film-4-cover.jpg.asset.json";
+import film5 from "@/assets/films/film-5.mp4.asset.json";
+import preview5 from "@/assets/films/film-5-preview.mp4.asset.json";
+import cover5 from "@/assets/films/film-5-cover.jpg.asset.json";
+import film6 from "@/assets/films/film-6.mp4.asset.json";
+import preview6 from "@/assets/films/film-6-preview.mp4.asset.json";
+import cover6 from "@/assets/films/film-6-cover.jpg.asset.json";
+import film7 from "@/assets/films/film-7.mp4.asset.json";
+import preview7 from "@/assets/films/film-7-preview.mp4.asset.json";
+import cover7 from "@/assets/films/film-7-cover.jpg.asset.json";
+import film9 from "@/assets/films/film-9.mp4.asset.json";
+import preview9 from "@/assets/films/film-9-preview.mp4.asset.json";
+import cover9 from "@/assets/films/film-9-cover.jpg.asset.json";
+import film10 from "@/assets/films/film-10.mp4.asset.json";
+import preview10 from "@/assets/films/film-10-preview.mp4.asset.json";
+import cover10 from "@/assets/films/film-10-cover.jpg.asset.json";
 import ads from "@/assets/work-ads.jpg";
 import aggregators from "@/assets/work-aggregators.jpg";
 import branding from "@/assets/work-branding.jpg";
@@ -56,18 +80,26 @@ export const work = [
   { title: "Website Development", cat: "Branding", img: website },
 ];
 
-const V = "https://ovlecd37gjnsopi9.public.blob.vercel-storage.com";
-const P = "https://i.postimg.cc";
-export const reels = [
-  { src: `${V}/reel1.mp4`, poster: `${P}/jqFK2DYK/poster3.jpg`, tag: "Cinematic", title: "Promotion" },
-  { src: `${V}/reel3.mp4`, poster: `${P}/JhSM6VyH/poster4.jpg`, tag: "Live", title: "Event Coverage" },
-  { src: `${V}/reel4.mp4`, poster: `${P}/CKSpXDkJ/poster5.jpg`, tag: "Reel", title: "Promotion Video" },
-  { src: `${V}/reel5.mp4`, poster: `${P}/nL5F52Ys/poster6.png`, tag: "Shoot", title: "Product Film" },
-  { src: `${V}/reel6.mp4`, poster: `${P}/nzxDDCvL/poster7.jpg`, tag: "Videography", title: "Promotion Video" },
-  { src: `${V}/reel7.mp4`, poster: `${P}/bvmBYjhX/poster10.jpg`, tag: "Showreel", title: "Creative Reel" },
-  { src: `${V}/reel9.mp4`, poster: `${P}/G2542Qf7/poster11.jpg`, tag: "Storytelling", title: "Brand Story" },
-  { src: `${V}/reel10.mp4`, poster: `${P}/gjnTkmDD/IMG-7184.jpg`, tag: "Live", title: "Event Coverage" },
+export const filmCategories = ["All films", "Reels", "Content Creation", "Events", "Motorsport", "Real Estate"] as const;
+export type FilmCategory = (typeof filmCategories)[number];
+export type Film = {
+  id: string; title: string; category: Exclude<FilmCategory, "All films" | "Reels">;
+  src: string; preview: string; poster: string; width: number; height: number; duration: string;
+};
+export const reels: Film[] = [
+  { id: "motorsport", title: "Desert in motion", category: "Motorsport", src: film7.url, preview: preview7.url, poster: cover7.url, width: 1080, height: 1920, duration: "00:52" },
+  { id: "stage", title: "Live on stage", category: "Events", src: film6.url, preview: preview6.url, poster: cover6.url, width: 1024, height: 576, duration: "00:44" },
+  { id: "property", title: "A different perspective", category: "Real Estate", src: film4.url, preview: preview4.url, poster: cover4.url, width: 720, height: 1280, duration: "01:40" },
+  { id: "food", title: "Made to crave", category: "Content Creation", src: film1.url, preview: preview1.url, poster: cover1.url, width: 720, height: 1280, duration: "00:32" },
+  { id: "story", title: "Stories from the everyday", category: "Content Creation", src: film3.url, preview: preview3.url, poster: cover3.url, width: 720, height: 1280, duration: "02:09" },
+  { id: "restaurant", title: "People. Food. Moments.", category: "Content Creation", src: film5.url, preview: preview5.url, poster: cover5.url, width: 576, height: 1024, duration: "00:48" },
+  { id: "brand", title: "A voice for your brand", category: "Content Creation", src: film9.url, preview: preview9.url, poster: cover9.url, width: 1080, height: 1920, duration: "00:37" },
+  { id: "fitness", title: "Built through dedication", category: "Content Creation", src: film10.url, preview: preview10.url, poster: cover10.url, width: 1080, height: 1920, duration: "00:25" },
 ];
+export function filmsInCategory(category: FilmCategory) {
+  return reels.filter((film) => category === "All films" || (category === "Reels" ? film.height > film.width : film.category === category));
+}
+export const agencyStatement = "A Dubai-based growth agency where creative meets performance — content that stops the scroll, media that pays it back.";
 
 export const platforms = [
   { name: "Noon", img: noon }, { name: "Talabat", img: talabat }, { name: "Deliveroo", img: deliveroo },
