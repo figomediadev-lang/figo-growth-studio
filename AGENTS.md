@@ -31,3 +31,5 @@ use the editor.
 - Site content (services, work, reels, contact) lives in src/lib/content.ts; pages share PageShell from src/components/site.tsx — single source for copy.
 - Film records include verified native dimensions, original media and lightweight silent previews; category filtering is shared so every view preserves the same collection and proportions.
 - Live previews play only while visible, pause for hidden tabs and full playback, and respect reduced motion; full originals open in an accessible player.
+- Film subject groups and category descriptions are centralized in content.ts; category selection is URL-backed and All films groups each record once, so format browsing never duplicates the archive.
+- Recent work uses CSS sticky stacking with contained originals and a static reduced-motion fallback, keeping native framing without a scroll-animation dependency.

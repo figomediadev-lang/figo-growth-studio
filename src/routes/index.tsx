@@ -2,10 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowDown, ArrowUpRight, Pause, Play, Plus } from "lucide-react";
 import { PageShell, SectionLabel } from "@/components/site";
-import { FilmGrid, LiveVideo } from "@/components/reels";
+import { RecentWork, LiveVideo } from "@/components/reels";
 import { Reveal, ScrollStatement } from "@/components/motion";
 import { Button } from "@/components/ui/button";
-import { agencyStatement, reels, services, work, WHATSAPP } from "@/lib/content";
+import { agencyStatement, filmGroups, filmsInCategory, reels, services, work } from "@/lib/content";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const [paused, setPaused] = useState(false);
-  const heroFilm = reels[0];
+  const heroFilm = reels.find((film) => film.id === "motorsport");
   return <PageShell>
     <section className="cinema-hero">
       {heroFilm && <LiveVideo film={heroFilm} paused={paused} className="hero-film" />}
@@ -32,8 +32,9 @@ function Home() {
     </section>
     <section className="section-wrap py-16 md:py-24">
       <div className="mb-12 flex justify-between"><SectionLabel n="01">Selected films</SectionLabel><ArrowDown className="size-5 text-primary" /></div>
-      <Reveal><div className="mb-12 flex flex-wrap items-end justify-between gap-6"><h2 className="font-display text-4xl font-bold md:text-6xl">The work.<br /><span className="font-serif text-primary">In motion.</span></h2><Button asChild variant="link" className="px-0"><Link to="/work">The complete collection <ArrowUpRight /></Link></Button></div></Reveal>
-      <FilmGrid films={reels.slice(0, 4)} />
+      <RecentWork films={reels.slice(0, 4)} />
+      <div className="mt-12 flex justify-end"><Button asChild variant="link" className="px-0"><Link to="/work">The complete collection ({reels.length}) <ArrowUpRight /></Link></Button></div>
+      <div className="category-directory mt-16">{filmGroups.map((group, i) => <Link key={group.category} to="/work" search={{ category: group.category }} className="category-directory-link group"><span className="label-mono text-primary">({String(i + 1).padStart(2, "0")})</span><h3 className="font-display text-2xl font-bold">{group.category}</h3><span className="label-mono text-muted-foreground">{String(filmsInCategory(group.category).length).padStart(2, "0")}</span><ArrowUpRight className="size-5 text-primary" /></Link>)}</div>
     </section>
     <section className="section-wrap border-t py-20 md:py-32"><SectionLabel n="02">Figo Media</SectionLabel><div className="mt-12"><ScrollStatement text={agencyStatement} /></div><div className="mt-12 grid gap-8 md:grid-cols-[1fr_1fr]"><p className="label-mono text-primary">We Create.<br />We Perform.<br />We Grow.</p><p className="max-w-lg text-lg text-muted-foreground">Every campaign starts with an idea worth watching. Branding, film, photography and social content built in-house. Tested, measured and optimized for growth.</p></div></section>
     <div className="type-marquee border-y" aria-hidden="true"><div>CREATE. <span>PERFORM.</span> GROW. CREATE. <span>PERFORM.</span> GROW.&nbsp;</div></div>
