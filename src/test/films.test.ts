@@ -7,7 +7,7 @@ describe("Film presentation", () => {
     expect([film?.width, film?.height]).toEqual([1024, 576]);
   });
   it("shows only portrait films in Reels", () => {
-    expect(filmsInCategory("Reels")).toHaveLength(13);
+    expect(filmsInCategory("Reels")).toHaveLength(12);
     expect(filmsInCategory("Reels").every((film) => film.height > film.width)).toBe(true);
   });
   it.each([ ["Motorsport", "motorsport"], ["Real Estate", "property"] ] as const)("keeps %s films under their own category", (category, id) => {
@@ -29,7 +29,7 @@ describe("Film presentation", () => {
   });
   it.each([
     ["kitchen", 608, 1080], ["arunima", 608, 1080], ["human-development", 1280, 720],
-    ["hunterhood", 1920, 1080], ["katea-stories", 406, 720], ["m2", 608, 1080],
+    ["hunterhood", 1920, 1080], ["katea-stories", 406, 720], ["m2", 1080, 608],
     ["mc-live", 608, 1080], ["live-sessions", 608, 1080], ["school-visit", 1280, 720],
   ])("preserves uploaded dimensions for %s", (id, width, height) => {
     const film = reels.find((item) => item.id === id);

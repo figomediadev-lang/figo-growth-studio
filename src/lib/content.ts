@@ -124,7 +124,7 @@ export type Film = {
 export const reels: Film[] = [
   { id: "kitchen", title: "From the kitchen", category: "Commercials", src: kitchen.url, preview: kitchenPreview.url, poster: kitchenCover.url, width: 608, height: 1080, duration: "00:33" },
   { id: "hunterhood", title: "Hunterhood live", category: "Events", src: hunterhood.url, preview: hunterhoodPreview.url, poster: hunterhoodCover.url, width: 1920, height: 1080, duration: "00:35" },
-  { id: "m2", title: "M2 — after dark", category: "Commercials", src: m2.url, preview: m2Preview.url, poster: m2Cover.url, width: 608, height: 1080, duration: "00:23" },
+  { id: "m2", title: "M2 — after dark", category: "Commercials", src: m2.url, preview: m2Preview.url, poster: m2Cover.url, width: 1080, height: 608, duration: "00:23" },
   { id: "human-development", title: "Human Development Solution", category: "Events", src: human.url, preview: humanPreview.url, poster: humanCover.url, width: 1280, height: 720, duration: "01:44" },
   { id: "arunima", title: "Arunima — in training", category: "Social Content", src: arunima.url, preview: arunimaPreview.url, poster: arunimaCover.url, width: 608, height: 1080, duration: "00:26" },
   { id: "katea-stories", title: "Katea — at the table", category: "Brand Stories", src: katea.url, preview: kateaPreview.url, poster: kateaCover.url, width: 406, height: 720, duration: "01:40" },

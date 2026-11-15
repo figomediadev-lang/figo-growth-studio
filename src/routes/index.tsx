@@ -32,7 +32,7 @@ function Home() {
     </section>
     <section className="section-wrap py-16 md:py-24">
       <div className="mb-12 flex justify-between"><SectionLabel n="01">Selected films</SectionLabel><ArrowDown className="size-5 text-primary" /></div>
-      <RecentWork films={reels.slice(0, 4)} />
+      <RecentWork films={["hunterhood", "m2", "kitchen"].map((id) => reels.find((film) => film.id === id)!)} />
       <div className="mt-12 flex justify-end"><Button asChild variant="link" className="px-0"><Link to="/work">The complete collection ({reels.length}) <ArrowUpRight /></Link></Button></div>
       <div className="category-directory mt-16">{filmGroups.map((group, i) => <Link key={group.category} to="/work" search={{ category: group.category }} className="category-directory-link group"><span className="label-mono text-primary">({String(i + 1).padStart(2, "0")})</span><h3 className="font-display text-2xl font-bold">{group.category}</h3><span className="label-mono text-muted-foreground">{String(filmsInCategory(group.category).length).padStart(2, "0")}</span><ArrowUpRight className="size-5 text-primary" /></Link>)}</div>
     </section>
