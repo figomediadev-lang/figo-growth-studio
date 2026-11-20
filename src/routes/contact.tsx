@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell, SectionLabel } from "@/components/site";
-import { PHONE, PHONE_HREF, WHATSAPP } from "@/lib/content";
+import { ConsultOptions, PageShell, SectionLabel } from "@/components/site";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -22,16 +21,7 @@ function ContactPage() {
       <section className="mx-auto max-w-7xl px-5 pt-36 pb-10 md:px-8">
         <SectionLabel n="C">Contact</SectionLabel>
         <h1 className="font-display mt-6 text-6xl font-black leading-[0.9] md:text-9xl">Let's build your <span className="font-serif text-primary">growth.</span></h1>
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          <a href={WHATSAPP} target="_blank" rel="noreferrer" className="group rounded-2xl border bg-card p-10 transition hover:shadow-glow">
-            <p className="label-mono text-primary">WhatsApp</p>
-            <p className="font-display mt-4 text-3xl font-bold">Book a consultation →</p>
-          </a>
-          <a href={PHONE_HREF} className="rounded-2xl border bg-card p-10 transition hover:shadow-glow">
-            <p className="label-mono text-primary">Call</p>
-            <p className="font-display mt-4 text-3xl font-bold">{PHONE}</p>
-          </a>
-        </div>
+        <div className="mt-16"><ConsultOptions /></div>
         <p className="label-mono mt-10 text-muted-foreground">Based in Dubai, UAE · Working with brands across the GCC</p>
       </section>
     </PageShell>

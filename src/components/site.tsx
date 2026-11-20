@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import logo from "@/assets/figo-logo.png";
-import { PHONE, PHONE_HREF, WHATSAPP } from "@/lib/content";
+import { EMAILS, PHONE, WHATSAPP } from "@/lib/content";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
 
 const nav = [
   { to: "/work", label: "Work" },
@@ -52,11 +52,27 @@ export function CTA() {
         </h2>
         <p className="mt-6 max-w-xl text-lg text-muted-foreground">Tell us about your brand. We'll come back with a tailored growth deck within 48 hours.</p>
         <div className="mt-10 flex flex-wrap gap-3">
-          <Button asChild size="lg"><a href={WHATSAPP} target="_blank" rel="noreferrer">Book a Consultation <ArrowUpRight /></a></Button>
-          <Button asChild size="lg" variant="outline"><a href={PHONE_HREF}>{PHONE}</a></Button>
+          <ConsultOptions />
         </div>
       </div>
     </section>
+  );
+}
+
+/** Book-a-consultation choices: call/WhatsApp plus email. Used in every CTA. */
+export function ConsultOptions() {
+  return (
+    <div className="grid w-full gap-4 md:grid-cols-2">
+      <a href={WHATSAPP} target="_blank" rel="noreferrer" className="group rounded-2xl border bg-card p-8 transition hover:border-primary hover:shadow-glow">
+        <p className="label-mono flex items-center gap-2 text-primary"><MessageCircle className="size-4" />Call or WhatsApp</p>
+        <p className="font-display mt-4 text-2xl font-bold md:text-3xl">{PHONE}</p>
+        <p className="mt-2 text-sm text-muted-foreground">Book a consultation <ArrowUpRight className="inline size-4" /></p>
+      </a>
+      <div className="rounded-2xl border bg-card p-8">
+        <p className="label-mono flex items-center gap-2 text-primary"><Mail className="size-4" />Email</p>
+        <div className="mt-4 space-y-2">{EMAILS.map((e) => <a key={e} href={`mailto:${e}?subject=Consultation%20request`} className="font-display block text-xl font-bold transition-colors hover:text-primary md:text-2xl">{e}</a>)}</div>
+      </div>
+    </div>
   );
 }
 
@@ -64,7 +80,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t">
       <div className="mx-auto max-w-7xl px-5 pt-16 pb-8 md:px-8">
-        <p className="footer-wordmark">FIGO MEDIA<span className="text-primary">®</span></p>
+        <p className="footer-wordmark">FIGO MEDIA</p>
         <div className="mt-8 flex flex-col justify-between gap-4 text-sm text-muted-foreground md:flex-row">
           <span>Performance & Social Growth Agency · Dubai, UAE</span>
           <span className="label-mono">We Create. We Perform. We Grow.</span>
