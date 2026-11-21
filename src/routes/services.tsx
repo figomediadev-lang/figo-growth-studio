@@ -22,7 +22,7 @@ function ServicesPage() {
     <PageShell>
       <section className="mx-auto max-w-7xl px-5 pt-36 pb-10 md:px-8">
         <SectionLabel n="S">Services</SectionLabel>
-        <h1 className="font-display mt-6 text-6xl font-black leading-[0.9] md:text-9xl">Capabilities, <span className="font-serif text-primary">end-to-end.</span></h1>
+        <h1 className="font-display mt-6 text-5xl font-black leading-[0.9] sm:text-6xl md:text-9xl">Capabilities, <span className="font-serif text-primary">end-to-end.</span></h1>
         <p className="mt-8 max-w-2xl text-lg text-muted-foreground">Performance Marketing • Social Media • Creative Strategy — plus the brand, commerce and platform ops that make growth stick.</p>
       </section>
       <section className="mx-auto max-w-7xl px-5 pb-20 md:px-8">
