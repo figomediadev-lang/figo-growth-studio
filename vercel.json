@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/__l5e/assets-v1/:path*",
-      "destination": "https://id-preview--9e9eb60e-2ef9-4d65-adb7-a383568e35f1.lovable.app/__l5e/assets-v1/:path*"
+      "destination": "https://figo-growth-showcase.lovable.app"
     }
   ]
 }
